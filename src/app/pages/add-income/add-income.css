@@ -1,0 +1,379 @@
+/* Optional micro-polish */
+* { -webkit-tap-highlight-color: transparent; }
+
+:host { display:block; }
+
+/* Page */
+.page{
+  padding:16px;
+  background:#f6f7fb;
+  min-height:100vh;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:#0f172a;
+}
+
+/* Header */
+.header{
+  background:#ffffff;
+  border:1px solid #eef0f5;
+  border-radius:16px;
+  padding:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 6px 20px rgba(15,23,42,0.05);
+  margin-bottom:14px;
+}
+
+.title{
+  font-size:22px;
+  margin:0 0 6px 0;
+  font-weight:800;
+  letter-spacing:-0.2px;
+}
+
+.subtitle{
+  margin:0;
+  color:#64748b;
+  font-size:14px;
+}
+
+.brand-title {
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  text-align: left;
+  margin-bottom: 16px;
+
+  /* Gold-Purple 3D gradient */
+  background: linear-gradient(135deg, #065f46, #047857, #059669);
+  -webkit-background-clip: text;
+  color: transparent;
+
+  /* Slight glossy effect */
+  position: relative;
+}
+
+.brand-title::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0));
+  mix-blend-mode: screen;
+}
+
+/* Form */
+/* Make the form card look identical to dashboard cards */
+.form-card {
+    background: #ffffff;
+    border: 1px solid #eef0f5;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    margin-top: 12px;
+}
+
+/* Ensure all inputs, selects and textarea take full width */
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 15px;
+    margin-bottom: 16px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+/* The label stays consistent */
+.form-label {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+
+/* Cards */
+.card{
+  background:#ffffff;
+  border:1px solid #eef0f5;
+  border-radius:16px;
+  padding:14px;
+  box-shadow:0 6px 18px rgba(15,23,42,0.05);
+}
+
+/* KPI layout */
+.kpi-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.kpi-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:8px;
+}
+
+.kpi-label{
+  font-size:13px;
+  color:#64748b;
+  font-weight:600;
+}
+
+.kpi-chip{
+  font-size:12px;
+  font-weight:700;
+  padding:4px 8px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+
+.kpi-chip.positive{
+  background:#ecfdf5;
+  color:#059669;
+  border:1px solid #d1fae5;
+}
+
+.kpi-chip.negative{
+  background:#fef2f2;
+  color:#dc2626;
+  border:1px solid #fee2e2;
+}
+
+.kpi-chip.neutral{
+  background:#f1f5f9;
+  color:#334155;
+  border:1px solid #e2e8f0;
+}
+
+.kpi-value{
+  font-size:26px;
+  font-weight:800;
+  letter-spacing:-0.3px;
+}
+
+.kpi-foot{
+  margin-top:6px;
+  font-size:12px;
+  color:#94a3b8;
+}
+
+/* Enable click */
+.card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-link .card {
+    cursor: pointer;
+}
+
+/* Sections */
+.section{
+  margin-top:12px;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+
+.section-title{
+  margin:0;
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:-0.1px;
+}
+
+/* Goal */
+.goal-row{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  font-size:15px;
+  margin:6px 0 10px 0;
+}
+
+.goal-label{ color:#64748b; font-weight:600; }
+.goal-value{ font-weight:800; }
+
+.progress-wrap{
+  margin-top:6px;
+}
+
+.progress-bar{
+  width:100%;
+  height:10px;
+  background:#e2e8f0;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  height:100%;
+  background:linear-gradient(90deg,#2563eb,#7c3aed);
+  border-radius:999px;
+}
+
+.progress-text{
+  margin-top:8px;
+  font-size:12px;
+  color:#64748b;
+  font-weight:700;
+}
+
+/* Forecast */
+.forecast-value{
+  font-size:24px;
+  font-weight:800;
+  margin:4px 0;
+}
+
+.section-note{
+  font-size:12px;
+  color:#94a3b8;
+}
+
+/* Buttons */
+.btn{
+  border:none;
+  cursor:pointer;
+  font-weight:800;
+  border-radius:12px;
+  padding:8px 12px;
+  font-size:13px;
+}
+
+.btn-save{
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #065f46, #047857, #059669);
+  box-shadow: 0 6px 18px rgba(6, 95, 70, 0.35);
+}
+
+.btn-save:hover {
+  box-shadow: 0 8px 22px rgba(6, 95, 70, 0.45);
+}
+
+.cta{
+  margin-top:14px;
+}
+
+.form-label {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 15px;
+    margin-bottom: 16px;
+    background: #fff;
+}
+
+
+/* Tablet a bit wider */
+@media (min-width: 700px){
+  .page{ max-width:520px; margin:0 auto; }
+}
+
+/* Remove number input spinners */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.top-bar {
+  display: flex;
+  align-items: baseline; 
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.green-arrow {
+  font-size: 26px;    
+  font-weight: 700;
+  color: #1FAE4B;
+  text-decoration: none;
+  line-height: 1;
+  margin-right: 4px;
+  margin-top: 2px;    
+}
+
+.green-arrow:hover {
+  color: #158a3a;
+}
+
+
+.green-back-btn {
+  font-size: 28px;
+  font-weight: 700;
+  color: #065f46;
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.app-msg{
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin: 10px 0 14px;
+  font-weight: 600;
+}
+.app-msg.ok{ background: #e8fff1; color:#116b3a; border: 1px solid #b8f0cf; }
+.app-msg.err{ background: #fff0f0; color:#8a1f1f; border: 1px solid #ffd0d0; }
+
+.field-err{
+  margin: 6px 0 10px;
+  font-size: 13px;
+  color: #8a1f1f;
+}
+
+/* iOS: make date input look like normal input */
+.form-input[type="date"]{
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 48px;
+  line-height: 1.2;
+  padding: 12px;
+  background: #fff;
+}
+
+/* iOS Safari internal date text */
+.form-input[type="date"]::-webkit-date-and-time-value{
+  text-align: left;
+  font-size: 15px;
+  color: #0f172a;
+}
+
+/* calendar icon behavior (optional) */
+.form-input[type="date"]::-webkit-calendar-picker-indicator{
+  opacity: .55;
+}
+

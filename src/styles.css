@@ -1,0 +1,44 @@
+/* Base */
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #f6f7fb;
+  overflow-x: hidden;
+
+  /* stop iOS font scaling */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  /* reduce scroll bounce effects */
+  overscroll-behavior: none;
+}
+
+/* iOS smooth scrolling */
+body {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
+}
+
+/* Make app full height */
+app-root, .page {
+  min-height: 100dvh;
+  background: #f6f7fb;
+}
+
+/* ✅ Prevent iOS input auto-zoom */
+input, textarea, select, button {
+  font-size: 16px;
+}
+
+/* Optional: safe areas */
+.page {
+  padding-top: calc(16px + env(safe-area-inset-top));
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  padding-left: calc(16px + env(safe-area-inset-left));
+  padding-right: calc(16px + env(safe-area-inset-right));
+}
+
+/* If you have a fixed top bar */
+.top-bar {
+  padding-top: env(safe-area-inset-top);
+}

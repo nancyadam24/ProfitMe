@@ -1,0 +1,24 @@
+<div class="p-4 text-white bg-[#0b0d12] min-h-screen">
+
+  <h2 class="text-xl font-semibold mb-4">🎯 Στόχοι</h2>
+
+  <div class="space-y-5">
+
+    <div class="bg-white/10 border border-white/5 rounded-2xl p-4">
+      <p class="text-sm text-gray-300 mb-2">Μηνιαίος Στόχος Τζίρου</p>
+
+      <input
+        type="number"
+        placeholder="€"
+        [(ngModel)]="monthlyGoal"
+        class="w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white" />
+
+      <button
+        (click)="saveMonthlyGoal()"
+        class="w-full mt-3 p-2 bg-gradient-to-r from-cyan-500 to-violet-600 rounded-xl text-white font-semibold">
+        Αποθήκευση
+      </button>
+    </div>
+
+  </div>
+</div>

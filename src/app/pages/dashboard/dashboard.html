@@ -1,0 +1,280 @@
+<div class="page">
+
+  <!-- BRAND -->
+  <div class="brand-header">
+    <img
+      class="brand-image-title"
+      src="assets/profitme.png"
+      alt="ProfitMe"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div>
+      <h1 class="title">Οικονομική Εικόνα</h1>
+
+      <p class="subtitle">
+        Μήνας: <b>{{ currentMonthLabel }}</b>
+      </p>
+    </div>
+  </header>
+
+
+  <!-- ============================= -->
+  <!-- KPI GRID -->
+  <!-- ============================= -->
+
+  <section class="kpi-grid">
+
+    <!-- ΕΣΟΔΑ -->
+    <a routerLink="/add-income" class="card-link">
+
+      <div class="card kpi kpi-compact kpi-chip-below">
+
+        <div class="kpi-top">
+
+          <span class="kpi-label-wrap">
+            <span class="kpi-label">
+              Έσοδα Μήνα
+            </span>
+          </span>
+
+          <!-- Σύγκριση με προηγούμενο μήνα -->
+          <span
+            class="kpi-chip"
+            [ngClass]="incomeChangeClass()">
+            {{ changeLabel(incomeChangePercent) }}
+          </span>
+
+        </div>
+
+        <div class="kpi-value">
+          €{{ monthlyIncome | number:'1.2-2' }}
+        </div>
+
+        <div class="kpi-foot">
+          Σύνολο εσόδων για τον τρέχοντα μήνα
+        </div>
+
+      </div>
+
+    </a>
+
+
+    <!-- ΕΞΟΔΑ -->
+    <a routerLink="/add-expense" class="card-link">
+
+      <div class="card kpi kpi-compact kpi-chip-below">
+
+        <div class="kpi-top">
+
+          <span class="kpi-label-wrap">
+            <span class="kpi-label">
+              Έξοδα Μήνα
+            </span>
+          </span>
+
+          <!-- Σύγκριση με προηγούμενο μήνα -->
+          <span
+            class="kpi-chip"
+            [ngClass]="expensesChangeClass()">
+            {{ changeLabel(expensesChangePercent) }}
+          </span>
+
+        </div>
+
+        <div class="kpi-value">
+          €{{ monthlyExpenses | number:'1.2-2' }}
+        </div>
+
+        <div class="kpi-foot">
+          Σύνολο εξόδων για τον τρέχοντα μήνα
+        </div>
+
+      </div>
+
+    </a>
+
+
+    <!-- ΚΑΘΑΡΟ ΚΕΡΔΟΣ -->
+    <div class="card kpi kpi-compact kpi-chip-below">
+
+      <div class="kpi-top">
+
+        <span class="kpi-label-wrap">
+          <span class="kpi-label">
+            Καθαρό Κέρδος
+          </span>
+        </span>
+
+        <!-- Σύγκριση με προηγούμενο μήνα -->
+        <span
+          class="kpi-chip"
+          [ngClass]="profitChangeClass()">
+          {{ changeLabel(profitChangePercent) }}
+        </span>
+
+      </div>
+
+      <div class="kpi-value">
+        €{{ netProfit | number:'1.2-2' }}
+      </div>
+
+      <div class="kpi-foot">
+        Έσοδα μείον έξοδα
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ============================= -->
+  <!-- GOAL -->
+  <!-- ============================= -->
+
+  <section class="card section">
+
+    <div class="section-head">
+
+      <h2 class="section-title">
+        Στόχος Τζίρου Μήνα
+      </h2>
+
+      <!-- Edit -->
+      <button
+        *ngIf="!editingGoal"
+        class="btn btn-outline"
+        (click)="editingGoal = true">
+        Αλλαγή
+      </button>
+
+      <!-- Save -->
+      <button
+        *ngIf="editingGoal"
+        class="btn btn-success"
+        (click)="saveGoal()">
+        ✓
+      </button>
+
+    </div>
+
+
+    <div class="goal-row">
+
+      <span class="goal-label">
+        Στόχος:
+      </span>
+
+      <!-- Goal input -->
+      <input
+        *ngIf="editingGoal"
+        class="goal-input"
+        type="text"
+        inputmode="decimal"
+        pattern="[0-9]*"
+        placeholder="π.χ. 3000"
+        [(ngModel)]="goal"
+        enterkeyhint="done"
+        autocomplete="off"
+      />
+
+      <!-- Goal value -->
+      <span
+        *ngIf="!editingGoal"
+        class="goal-value">
+        €{{ goal }}
+      </span>
+
+    </div>
+
+
+    <!-- Progress -->
+    <div class="progress-wrap">
+
+      <div class="progress-bar">
+
+        <div
+          class="progress-fill"
+          [style.width.%]="progress">
+        </div>
+
+      </div>
+
+      <div class="progress-text">
+        {{ progress }}% επιτευγμένο
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ============================= -->
+  <!-- FORECAST -->
+  <!-- ============================= -->
+
+  <section class="card section">
+
+    <div class="section-head">
+
+      <h2 class="section-title">
+        Πρόβλεψη Επόμενου Μήνα
+      </h2>
+
+    </div>
+
+
+    <!-- Loading -->
+    <div
+      *ngIf="forecastLoading"
+      class="forecast-value">
+      ...
+    </div>
+
+
+    <!-- Forecast available -->
+    <div
+      *ngIf="!forecastLoading && forecastValue !== null"
+      class="forecast-value">
+      €{{ forecastValue | number:'1.2-2' }}
+    </div>
+
+
+    <!-- Forecast unavailable -->
+    <div
+      *ngIf="!forecastLoading && forecastValue === null"
+      class="forecast-value">
+      —
+    </div>
+
+
+    <div class="section-note">
+      Βασισμένο στις τελευταίες κινήσεις σου.
+    </div>
+
+  </section>
+
+
+  <br>
+
+
+  <!-- ============================= -->
+  <!-- ANALYTICS CTA -->
+  <!-- ============================= -->
+
+  <a routerLink="/insights">
+
+    <button class="btn-analytics">
+      Δες Αναλυτικά
+    </button>
+
+  </a>
+
+
+  <br>
+
+</div>

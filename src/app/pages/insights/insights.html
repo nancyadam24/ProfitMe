@@ -1,0 +1,225 @@
+<div class="page">
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <a routerLink="/dashboard" class="green-back-btn">&lt;</a>
+    <div class="brand-title">ProfitMe</div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div>
+      <h1 class="title">Αναλυτικές Κινήσεις</h1>
+      <p class="subtitle">
+        Μήνας:
+        <b>{{ monthLabel(selectedMonth) }}</b>
+      </p>
+    </div>
+
+    <div class="month-select">
+      <select class="month-dd" [(ngModel)]="selectedMonth" (change)="onMonthChange()">
+        <option *ngFor="let m of months" [value]="m">{{ monthLabel(m) }}</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- message -->
+  <div *ngIf="message"
+       class="app-msg"
+       [class.ok]="messageType==='success'"
+       [class.err]="messageType==='error'">
+    {{ message }}
+  </div>
+
+  <!-- Pie -->
+  <section class="card section">
+    <div class="section-head">
+      <h2 class="section-title">Σύνοψη σε μορφή πίτας</h2>
+    </div>
+
+    <div class="pie-wrap" *ngIf="summary">
+      <div class="pie">
+        <div
+          class="pie-slice"
+          *ngFor="let s of pieView"
+          [ngClass]="s.cls"
+          [style.--p]="s.p"
+          [style.--o]="s.o"
+        ></div>
+
+        <div class="pie-center">
+          <div class="pie-center-title">Καθαρό</div>
+          <div class="pie-center-value">
+            €{{ summary.netProfit | number:'1.2-2' }}
+          </div>
+        </div>
+      </div>
+
+      <div class="pie-legend">
+        <div class="legend-item" *ngFor="let s of pieView">
+          <span class="dot" [ngClass]="s.cls"></span>
+          <span class="l-label">{{ s.label }}</span>
+          <span class="l-val">€{{ s.value | number:'1.2-2' }}</span>
+          <span class="l-pct">{{ piePercent(s.value) }}%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Summary -->
+  <section class="card section">
+    <div class="section-head">
+      <h2 class="section-title">Συνοπτικά</h2>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-box">
+        <div class="summary-label">Σύνολο Εσόδων</div>
+        <div class="summary-value income">€{{ summary?.incomeTotal | number:'1.2-2' }}</div>
+      </div>
+
+      <div class="summary-box">
+        <div class="summary-label">Σύνολο Εξόδων</div>
+        <div class="summary-value expense">€{{ summary?.expenseTotal | number:'1.2-2' }}</div>
+      </div>
+
+      <div class="summary-box">
+        <div class="summary-label">Καθαρό Κέρδος</div>
+        <div class="summary-value profit">€{{ summary?.netProfit | number:'1.2-2' }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Breakdown -->
+  <section class="card section">
+    <div class="section-head">
+      <h2 class="section-title">Ανάλυση Κατηγοριών</h2>
+    </div>
+
+    <div class="subhead">Έσοδα</div>
+    <div *ngIf="entriesSorted(summary?.incomeByCat || {}).length; else noIncomeCats">
+      <div class="category-item" *ngFor="let c of entriesSorted(summary?.incomeByCat || {})">
+        <span class="cat-name">{{ c.key }}</span>
+        <span class="category-amount income">€{{ c.val | number:'1.2-2' }}</span>
+      </div>
+    </div>
+    <ng-template #noIncomeCats>
+      <div class="category-item empty">Δεν υπάρχουν έσοδα.</div>
+    </ng-template>
+
+    <div class="subhead mt">Έξοδα</div>
+    <div *ngIf="entriesSorted(summary?.expenseByCat || {}).length; else noExpenseCats">
+      <div class="category-item" *ngFor="let c of entriesSorted(summary?.expenseByCat || {})">
+        <span class="cat-name">{{ c.key }}</span>
+        <span class="category-amount expense">€{{ c.val | number:'1.2-2' }}</span>
+      </div>
+    </div>
+    <ng-template #noExpenseCats>
+      <div class="category-item empty">Δεν υπάρχουν έξοδα.</div>
+    </ng-template>
+  </section>
+
+  <!-- ✅ Transactions List (like screenshot) -->
+  <section class="card section tx-section">
+    <div class="section-head">
+      <h2 class="section-title">Όλες οι Κινήσεις</h2>
+    </div>
+
+    <div *ngIf="(summary?.txs?.length || 0) > 0; else emptyTxs">
+      <div class="tx-card" *ngFor="let t of summary!.txs">
+
+        <!-- TOP -->
+        <div class="tx-top">
+          <div class="tx-title">
+            <div class="tx-name">{{ t.category }}</div>
+            <div class="tx-sub" *ngIf="t.note">{{ t.note }}</div>
+          </div>
+
+          <div class="tx-amount" [ngClass]="txClass(t)">
+            {{ sign(t) }} €{{ t.amount | number:'1.2-2' }}
+          </div>
+        </div>
+
+        <!-- BOTTOM -->
+        <div class="tx-bottom">
+          <div class="tx-meta">
+            <div class="tx-date">{{ t.date }}</div>
+          </div>
+
+          <div class="tx-actions">
+            <button class="pill-btn" (click)="openEdit(t)">Επεξεργασία</button>
+            <button class="pill-btn danger" (click)="openDelete(t)">Διαγραφή</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <ng-template #emptyTxs>
+      <div class="tx-empty">Δεν υπάρχουν καταχωρήσεις.</div>
+    </ng-template>
+  </section>
+
+  <!-- Edit Modal -->
+  <div class="modal-backdrop" *ngIf="editing">
+    <div class="modal">
+      <div class="modal-head">
+        <div class="modal-title">Επεξεργασία Κίνησης</div>
+        <button class="x" (click)="closeEdit()">✕</button>
+      </div>
+
+      <div class="modal-body" *ngIf="editTx as e">
+        <label class="form-label">Ποσό (€)</label>
+        <input
+          class="form-input"
+          type="text"
+          inputmode="decimal"
+          pattern="[0-9]*[.,]?[0-9]*"
+          placeholder="0.00"
+          [(ngModel)]="e.amount"
+        />
+
+        <label class="form-label">Κατηγορία</label>
+        <input class="form-input" type="text" [(ngModel)]="e.category" />
+
+        <label class="form-label">Ημερομηνία</label>
+        <input class="form-input" type="date" [(ngModel)]="e.date" />
+
+        <label class="form-label">Σημείωση</label>
+        <textarea class="form-input" rows="3" [(ngModel)]="e.note"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-outline" (click)="closeEdit()">Άκυρο</button>
+        <button class="btn-success" (click)="saveEdit()">Αποθήκευση</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Delete Confirm Modal (small popup centered) -->
+  <div class="modal-backdrop" *ngIf="deleteOpen">
+    <div class="modal confirm">
+      <div class="modal-head">
+        <div class="modal-title">Διαγραφή Κίνησης</div>
+        <button class="x" (click)="closeDelete()">✕</button>
+      </div>
+
+      <div class="confirm-body" *ngIf="deleteTarget as d">
+        <div class="confirm-title">Σίγουρα θέλεις διαγραφή;</div>
+
+        <div class="confirm-meta">
+          <div><b>{{ d.category }}</b></div>
+          <div style="margin-top:6px;">
+            {{ d.date }} • {{ sign(d) }} €{{ d.amount | number:'1.2-2' }}
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-outline" (click)="closeDelete()">Άκυρο</button>
+        <button class="btn-danger" (click)="confirmDelete()">Διαγραφή</button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,87 @@
+<div class="page">
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <a routerLink="/dashboard" class="green-back-btn">&lt;</a>
+    <div class="brand-title">ProfitMe</div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div>
+      <h1 class="title">Προσθήκη Εξόδων</h1>
+      <p class="subtitle">Μήνας: <b>{{ currentMonthLabel }}</b></p>
+    </div>
+  </header>
+
+  <!-- ✅ In-app message banner -->
+  <div
+    *ngIf="message"
+    class="app-msg"
+    [class.ok]="messageType === 'success'"
+    [class.err]="messageType === 'error'"
+  >
+    {{ message }}
+  </div>
+
+  <!-- Form Card -->
+  <section class="card section form-card">
+
+    <!-- Ποσό -->
+    <label class="form-label">Ποσό Εξόδου (€)</label>
+    <input
+        class="form-input"
+        type="text"
+        inputmode="decimal"
+        pattern="[0-9]*[.,]?[0-9]*"
+        placeholder="0.00"
+        [(ngModel)]="amount"
+        name="amount"
+    >
+    <!-- Κατηγορία -->
+    <label class="form-label">Κατηγορία</label>
+    <select
+      class="form-input"
+      [(ngModel)]="category"
+      name="category"
+    >
+      <option value="" disabled selected hidden>— Επιλέξτε κατηγορία —</option>
+      <option>Service Εξοπλισμού</option>
+      <option>Τηλέφωνο & Internet</option>
+      <option>Αγορές Προϊόντων</option>
+      <option>Ενοίκιο</option>
+      <option>Λογαριασμοί</option>
+      <option>Μεταφορικά</option>
+      <option>Λοιπά</option>
+    </select>
+
+    <!-- Ημερομηνία -->
+    <label class="form-label">Ημερομηνία</label>
+    <input
+      class="form-input"
+      type="date"
+      [(ngModel)]="date"
+      name="date"
+      [min]="minDate"
+      [max]="maxDate"
+    />
+
+    <!-- Σημείωση -->
+    <label class="form-label">Σημείωση (προαιρετικά)</label>
+    <textarea
+      class="form-input"
+      rows="3"
+      [(ngModel)]="note"
+      name="note"
+    ></textarea>
+
+  </section>
+
+  <br>
+
+  <!-- Save Button -->
+  <button class="btn-save" (click)="saveExpense()">
+    Αποθήκευση
+  </button>
+
+</div>
