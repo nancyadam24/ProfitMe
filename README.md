@@ -117,25 +117,22 @@ Services are responsible for financial calculations, date handling, goals, summa
 
 ### 🏠 Dashboard
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/5d43a344-69cf-4b33-918b-6f63944b346e" width="350" alt="ProfitMe Dashboard" />
-  <img src="https://github.com/user-attachments/assets/47288ecb-28db-4626-824d-da0dd5980d67" width="350" alt="ProfitMe Dashboard Overview" />
-</p>
+| Overview                                                                                                                                    | Monthly Performance                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/user-attachments/assets/5d43a344-69cf-4b33-918b-6f63944b346e" width="420" alt="ProfitMe Dashboard Overview" /> | <img src="https://github.com/user-attachments/assets/47288ecb-28db-4626-824d-da0dd5980d67" width="420" alt="ProfitMe Monthly Performance" /> |
 
-### 💵 Income & Expense Tracking
+### 💵 Income & Expenses
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/c9d92a96-77eb-456c-b39b-5e695218718e" width="350" alt="ProfitMe Income Tracking" />
-  <img src="https://github.com/user-attachments/assets/ed9565a8-df8f-4155-8af9-69e85e6f18d9" width="350" alt="ProfitMe Expense Tracking" />
-</p>
+| Income Tracking                                                                                                                          | Expense Tracking                                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/user-attachments/assets/c9d92a96-77eb-456c-b39b-5e695218718e" width="420" alt="ProfitMe Income Tracking" /> | <img src="https://github.com/user-attachments/assets/ed9565a8-df8f-4155-8af9-69e85e6f18d9" width="420" alt="ProfitMe Expense Tracking" /> |
 
-### 📊 Financial Insights
+### 📊 Insights & Analytics
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/6a58a846-9fba-4f46-a0f6-ef49bffcfa81" width="350" alt="ProfitMe Financial Insights" />
-  <img src="https://github.com/user-attachments/assets/f372fd2c-78cf-4860-96b7-8e6e192de4c0" width="350" alt="ProfitMe Analytics" />
-</p>
-```
+| Financial Insights                                                                                                                          | Analytics Overview                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/user-attachments/assets/6a58a846-9fba-4f46-a0f6-ef49bffcfa81" width="420" alt="ProfitMe Financial Insights" /> | <img src="https://github.com/user-attachments/assets/f372fd2c-78cf-4860-96b7-8e6e192de4c0" width="420" alt="ProfitMe Analytics Overview" /> |
+
 
 ---
 
