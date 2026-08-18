@@ -1,4 +1,3 @@
-<img width="1206" height="2622" alt="cd3c98e1-878c-467a-9d33-95f3e80a508a" src="https://github.com/user-attachments/assets/d902a23a-a468-4aef-80b8-5f98f27c8e29" />
 # 💰 ProfitMe
 
 **ProfitMe** is a modern personal finance management application built with **Angular** and **TypeScript**, designed to make tracking personal finances simple, visual, and intuitive.
