@@ -1,187 +1,82 @@
 💰 ProfitMe
 
-<p align="center">
-  <strong>A modern personal finance management application built with Angular & TypeScript.</strong>
-</p>
-<p align="center">
-  Track your income and expenses, understand your financial activity, set monthly goals and get smart financial forecasts — all from a clean, mobile-first dashboard.
-</p>
+ProfitMe is a modern personal finance management application built with Angular and TypeScript, designed to make tracking personal finances simple, visual, and intuitive.
 
-⸻
-
-📱 App Preview
-
-<p align="center">
-  <img src="screenshots/dashboard.jpeg" width="30%" alt="ProfitMe Dashboard" />
-  &nbsp;&nbsp;
-  <img src="screenshots/analytics.png" width="30%" alt="ProfitMe Financial Analytics" />
-  &nbsp;&nbsp;
-  <img src="screenshots/transactions.png" width="30%" alt="ProfitMe Transactions" />
-</p>
-<p align="center">
-  <i>Dashboard • Financial Analytics • Transaction Management</i>
-</p>
-
-⸻
-
-🚀 About ProfitMe
-
-ProfitMe is a personal finance management application designed to provide a simple and intuitive way to understand your financial activity.
-
-Instead of just recording transactions, ProfitMe automatically calculates monthly financial performance and presents it through a visual dashboard.
-
-Users can monitor their:
-
-* 💵 Monthly income
-* 💳 Monthly expenses
-* 💰 Net profit
-* 📈 Month-over-month performance
-* 🎯 Monthly financial goals
-* 🔮 Next-month financial forecast
-* 📊 Spending and income categories
-* 🧾 Transaction history
-
-The application follows a mobile-first design and stores financial data locally using IndexedDB.
+The application allows users to record income and expenses, monitor monthly performance, set financial goals, explore spending insights, and compare their financial activity across different months.
 
 ⸻
 
 ✨ Features
 
-💰 Financial Dashboard
+📊 Financial Dashboard
 
-The main dashboard provides an immediate overview of the user’s financial situation for the current month.
-
-It includes:
-
-* Total monthly income
-* Total monthly expenses
+* Monthly income overview
+* Monthly expense overview
 * Automatic net profit calculation
-* Month-over-month comparison
-* Monthly revenue goal
-* Goal completion progress
-* Next-month financial forecast
-
-⸻
-
-📈 Month-over-Month Comparison
-
-ProfitMe automatically compares the current month’s financial performance with the previous month.
-
-The percentage change is calculated using:
-
-Change (%) =
-((Current Month - Previous Month) / Previous Month) × 100
-
-For example:
-
-Previous Month Income: €1,000
-Current Month Income:  €1,200
-Change: +20%
-
-The dashboard uses dynamic indicators to make financial trends easy to understand.
-
-🟢 Positive — financial improvement
-🔴 Negative — financial decline
-⚪ Neutral — no change or insufficient comparison data
-
-Expense indicators use inverse financial logic: a decrease in expenses is considered positive, while an increase is considered negative.
-
-The application also handles cases where the previous month’s value is zero, preventing invalid results such as Infinity%.
-
-⸻
+* Percentage comparison with the previous month
+* Dynamic positive, negative, and neutral financial indicators
 
 💵 Income & Expense Tracking
 
-Users can record and manage financial transactions directly inside ProfitMe.
+* Add and manage income transactions
+* Add and manage expenses
+* Organize financial activity by month
+* Automatic monthly total calculations
 
-The application supports:
+📈 Monthly Performance
 
-* Adding income
-* Adding expenses
-* Editing transactions
-* Deleting transactions
-* Transaction dates
-* Transaction categories
-* Automatic monthly calculations
-
-Each transaction automatically contributes to the corresponding monthly financial summary.
-
-⸻
-
-📊 Financial Analytics
-
-ProfitMe provides a dedicated analytics view for exploring financial activity in more detail.
-
-Users can select a month and view:
-
-* Total income
-* Total expenses
-* Net profit
-* Income categories
-* Expense categories
-* Individual transactions
-* Visual financial summaries
-
-The analytics screen includes a visual chart representing the relationship between income, expenses and net profit.
-
-⸻
-
-🎯 Monthly Financial Goals
-
-Users can define their own monthly revenue target.
-
-ProfitMe automatically calculates progress toward that target and displays it using a dynamic progress bar.
+ProfitMe automatically compares the current month with the previous month.
 
 For example:
 
-Monthly Goal: €2,000
-Current Net Profit: €1,000
-Progress: 50%
+Income        €1,200   +20%
+Expenses        €500   -16.7%
+Net Profit      €700   +75%
 
-Goals can be edited directly from the dashboard.
+The dashboard uses visual indicators to make trends immediately understandable:
 
-⸻
+* 🟢 Positive financial change
+* 🔴 Negative financial change
+* ⚪ Neutral / unavailable comparison
 
-🔮 Smart Financial Forecasting
+For expenses, a decrease is considered positive while an increase is considered negative.
 
-ProfitMe includes forecasting functionality that estimates the expected net profit for the next month based on recent financial activity.
+🎯 Financial Goals
 
-The forecast is displayed directly on the dashboard, providing users with an indication of their expected upcoming financial performance.
+* Set a monthly revenue goal
+* Edit goals directly from the dashboard
+* Track goal completion through a dynamic progress bar
 
-⸻
+🔮 Smart Forecasting
 
-💾 Local-First Data Storage
+ProfitMe includes financial forecasting functionality that estimates the next month’s net profit based on previous financial activity.
 
-ProfitMe uses IndexedDB for persistent client-side storage.
+📊 Insights
 
-This means financial data can be stored directly in the browser without requiring a traditional backend database.
+Users can explore their financial activity in more detail through the dedicated insights section.
 
-Benefits include:
+💾 Local Data Storage
 
-* Fast local access
-* Persistent browser storage
-* Reduced backend dependency
-* Simple offline-friendly architecture
+Financial data is stored locally using IndexedDB, allowing the application to maintain persistent data directly in the browser.
 
 ⸻
 
 🛠️ Tech Stack
 
-Technology	Purpose
-Angular	Front-end application framework
+Technology	Usage
+Angular	Front-end framework
 TypeScript	Application logic
 HTML5	Application structure
 CSS3	Custom responsive UI
-IndexedDB	Persistent client-side database
+IndexedDB	Local persistent storage
 RxJS	Reactive event handling
-Angular Router	Client-side navigation
-Angular Forms	Form handling and data binding
+Angular Router	Application navigation
 
 ⸻
 
-🏗️ Architecture
+🏗️ Application Architecture
 
-ProfitMe follows Angular’s component and service-based architecture.
+The application follows a component and service-based Angular architecture.
 
 src/
 │
@@ -209,60 +104,30 @@ src/
 ├── main.ts
 └── styles.css
 
-The application separates responsibilities between:
-
-Components — presentation and user interaction
-Services — business logic and financial calculations
-IndexedDB layer — persistent financial data storage
-
-This keeps the application modular and easier to maintain and extend.
+Services are responsible for financial calculations, date handling, goals, summaries, and forecasting, while Angular components handle presentation and user interaction.
 
 ⸻
 
-🧮 Financial Logic
+📸 Screenshots
 
-Net Profit
+Dashboard
 
-Net profit is calculated automatically:
+Add a screenshot of the ProfitMe dashboard here.
 
-Net Profit = Total Income - Total Expenses
+![ProfitMe Dashboard](screenshots/dashboard.png)
 
-Goal Progress
+Income & Expense Tracking
 
-Monthly goal progress is calculated using:
+Add screenshots of the income and expense screens here.
 
-Progress (%) =
-(Net Profit / Monthly Goal) × 100
+![Income](screenshots/income.png)
+![Expenses](screenshots/expenses.png)
 
-The displayed progress is constrained between 0% and 100%.
+Financial Insights
 
-Monthly Performance
+Add a screenshot of the analytics/insights screen here.
 
-ProfitMe compares the current month against the immediately preceding month, including transitions between years.
-
-For example:
-
-2026-08 → 2026-07
-2026-01 → 2025-12
-
-⸻
-
-🎨 UI / UX
-
-ProfitMe was designed with a clean, modern and mobile-first interface.
-
-The UI focuses on:
-
-* 📱 Mobile-first responsive design
-* 🎯 Clear financial KPIs
-* 🟢🔴 Dynamic financial indicators
-* 📊 Visual financial summaries
-* 💳 Card-based interface
-* ✨ Minimal navigation
-* 📈 Visual goal tracking
-* ⚡ Fast interaction
-
-The goal is to make financial information understandable at a glance without overwhelming the user with unnecessary complexity.
+![Insights](screenshots/insights.png)
 
 ⸻
 
@@ -270,14 +135,14 @@ The goal is to make financial information understandable at a glance without ove
 
 Prerequisites
 
-Make sure the following are installed:
+Make sure you have installed:
 
 * Node.js
 * npm
 * Angular CLI
 * Git
 
-You can verify your installation with:
+Check your installations with:
 
 node --version
 npm --version
@@ -292,37 +157,37 @@ Clone the repository:
 
 git clone https://github.com/nancyadam24/ProfitMe.git
 
-Navigate into the project:
+Navigate to the project:
 
 cd ProfitMe
 
-Install dependencies:
+Install the dependencies:
 
 npm install
 
 ⸻
 
-▶️ Running ProfitMe
+▶️ Run the Application
 
 Start the Angular development server:
 
 ng serve
 
-Alternatively:
+or:
 
 npm start
 
-Then open:
+Open your browser at:
 
 http://localhost:4200
 
-The development server automatically reloads the application when source files are modified.
+The application automatically reloads whenever the source files change.
 
 ⸻
 
 🧪 Testing
 
-Run the Angular unit tests with:
+Run unit tests:
 
 ng test
 
@@ -332,21 +197,52 @@ npm test
 
 ⸻
 
+🧠 Financial Calculations
+
+Net Profit
+
+ProfitMe calculates net profit automatically:
+
+Net Profit = Monthly Income - Monthly Expenses
+
+Month-over-Month Change
+
+Monthly financial performance is calculated using:
+
+Change (%) = ((Current Month - Previous Month) / Previous Month) × 100
+
+The application also handles edge cases where the previous month’s value is zero to prevent invalid percentage results.
+
+⸻
+
 🗺️ Future Improvements
 
-ProfitMe is actively designed to be extendable. Potential future improvements include:
+Planned ideas for future versions include:
 
-* 🔐 User authentication
-* ☁️ Cloud synchronization
-* 💳 Multiple financial accounts
-* 🔁 Recurring transactions
-* 💰 Monthly budgets per category
-* 📊 Advanced financial charts
-* 📄 PDF / CSV financial reports
-* 🔔 Financial goal notifications
-* 🌙 Dark mode
-* 📱 Multi-device synchronization
-* 🔮 More advanced forecasting models
+* User authentication
+* Cloud synchronization
+* Multiple accounts
+* Budget categories
+* Recurring transactions
+* Advanced analytics and charts
+* CSV / PDF financial reports
+* Improved forecasting
+* Notifications for financial goals
+* Dark mode
+* Multi-device synchronization
+
+⸻
+
+🎨 Design
+
+ProfitMe focuses on a clean and minimal financial dashboard experience with:
+
+* Responsive layouts
+* Mobile-first design
+* Clear financial KPIs
+* Dynamic status indicators
+* Simple navigation
+* Visual goal tracking
 
 ⸻
 
@@ -356,12 +252,12 @@ Athanasia Adamidou
 
 Software Developer
 
-GitHub: @nancyadam24
+GitHub: nancyadam24
 
 ⸻
 
 ⭐ Support
 
-If you find ProfitMe interesting, consider giving the repository a ⭐.
+If you find ProfitMe interesting, consider giving the repository a star ⭐.
 
-Feedback, suggestions and contributions are welcome.
+Feedback and suggestions are always welcome.
